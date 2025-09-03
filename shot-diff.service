@@ -1,0 +1,18 @@
+[Unit]
+Description=Shot Diff Image Comparison API
+After=network.target
+
+[Service]
+Type=exec
+User=vlad
+Group=vlad
+WorkingDirectory=/path/to/shot-diff
+ExecStart=/path/to/shot-diff/start.sh
+Restart=always
+RestartSec=5
+Environment=PATH=/path/to/shot-diff/venv/bin
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

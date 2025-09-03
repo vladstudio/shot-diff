@@ -1,0 +1,10 @@
+shot-diff.kadoa.dev {
+    reverse_proxy localhost:8000
+    
+    # Optional: Add request timeout for image processing
+    reverse_proxy {
+        to localhost:8000
+        header_timeout 60s
+        read_timeout 60s
+    }
+}
