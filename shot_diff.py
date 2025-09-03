@@ -16,7 +16,7 @@ from typing import Tuple, List
 
 
 class ShotDiff:
-    def __init__(self, diff_threshold: int = 80, min_area: int = 100, padding: int = 5):
+    def __init__(self, diff_threshold: int = 50, min_area: int = 100, padding: int = 5):
         """
         Initialize the ShotDiff utility.
         
@@ -152,8 +152,8 @@ def main():
     parser = argparse.ArgumentParser(description="Smart Screenshot Comparison Utility")
     parser.add_argument("img1", help="Path to first image")
     parser.add_argument("img2", help="Path to second image")
-    parser.add_argument("-t", "--threshold", type=int, default=80, 
-                       help="Pixel difference threshold (0-255), default: 80")
+    parser.add_argument("-t", "--threshold", type=int, default=50, 
+                       help="Pixel difference threshold (0-255), default: 50")
     parser.add_argument("-m", "--min-area", type=int, default=100,
                        help="Minimum rectangle area to keep, default: 100")
     parser.add_argument("-p", "--padding", type=int, default=5,
