@@ -34,9 +34,15 @@ class ShotDiff:
         img1 = Image.open(img1_path).convert('RGB')
         img2 = Image.open(img2_path).convert('RGB')
         
-        # Ensure same dimensions
-        if img1.size != img2.size:
-            raise ValueError(f"Images must have same dimensions. Got {img1.size} and {img2.size}")
+        # Ensure same width, crop to same height if needed
+        if img1.size[0] != img2.size[0]:
+            raise ValueError(f"Images must have same width. Got {img1.size[0]} and {img2.size[0]}")
+        
+        # Crop to minimum height if heights differ
+        if img1.size[1] != img2.size[1]:
+            min_height = min(img1.size[1], img2.size[1])
+            img1 = img1.crop((0, 0, img1.size[0], min_height))
+            img2 = img2.crop((0, 0, img2.size[0], min_height))
         
         return np.array(img1), np.array(img2)
     
